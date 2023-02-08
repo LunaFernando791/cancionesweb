@@ -16,3 +16,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('canciones2/{id?}', function ($id = null) {
+    $canciones =[];
+    $canciones[] = ['cancion'=>'Bones', 'artista'=>'Imagine Dragones'];
+    $canciones[] = ['cancion'=>'Natural', 'artista'=>'Imagine Dragones'];
+    if(!is_null($id)){
+        $cancion = $canciones[$id];
+    }else{
+        $cancion=null;
+    }
+    //dd($canciones);
+    return view('canciones2', compact('canciones', 'cancion')); //se pueden mandar más variables
+    //->with(['canciones' => $canciones]);
+});
+
+//Route::get('canciones2/{id}', function ($id) {
+//    $canciones =[];
+//    $canciones[] = ['cancion'=>'Bones', 'artista'=>'Imagine Dragones'];
+//    $canciones[] = ['cancion'=>'Natural', 'artista'=>'Imagine Dragones'];
+//    $cncion = $canciones[$id];
+
+//    return view('cancion', compact('cncion')); 
+//});
